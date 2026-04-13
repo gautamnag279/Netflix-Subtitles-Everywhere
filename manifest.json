@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "Enhanced Prime Video & JioHotstar",
+  "version": "3.0",
+  "description": "Makes the subtitles on Amazon Prime Video and JioHotstar better and more customizable... cause no one wants to look at an Arial Font while watching a show.",
+  "permissions": ["storage", "activeTab"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "host_permissions": [
+    "*://*.primevideo.com/*",
+    "*://*.amazon.com/*",
+    "*://*.amazon.co.uk/*",
+    "*://*.amazon.in/*",
+    "*://*.hotstar.com/*",
+    "*://*.jiohotstar.com/*",
+    "*://*.hotstar.in/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.primevideo.com/*",
+        "*://*.amazon.com/gp/video/*",
+        "*://*.amazon.co.uk/gp/video/*",
+        "*://*.amazon.in/gp/video/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://*.hotstar.com/*",
+        "*://*.jiohotstar.com/*",
+        "*://*.hotstar.in/*"
+      ],
+      "js": ["content-hotstar.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Enhanced Prime Video & JioHotstar",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  }
+}
